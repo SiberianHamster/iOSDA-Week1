@@ -97,7 +97,6 @@
 		AEE36E1F1B705BA500BD5656 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				AEE36E471B7061A600BD5656 /* TweetJSONParser.swift */,
 				AE53602D1B70FCBE003C7BD6 /* tweet.json */,
 				AEE36E201B705BA500BD5656 /* Info.plist */,
 			);
@@ -140,6 +139,7 @@
 		AEE36E441B705E3900BD5656 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AEE36E471B7061A600BD5656 /* TweetJSONParser.swift */,
 				AEE36E451B70619100BD5656 /* Tweet.swift */,
 			);
 			name = Model;
