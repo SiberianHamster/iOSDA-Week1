@@ -18,23 +18,25 @@ class TweetJSONParser{
       for tweetObject in rootObject{
         if let text = tweetObject["text"] as? String,
         userInfo = tweetObject["user"] as? [String : AnyObject],
-        id = tweetObject["id"] as? String,
+        id = tweetObject["id_str"] as? String,
         userName = userInfo["name"] as? String,
           profileImage = userInfo["profile_image_url"] as? String{
 
             let tweet = Tweet(username: userName, id: id, profileImageURL: profileImage, text: text)
           tweets.append(tweet)
         }else{
+          println("WTF")
       }
       
       
     }
+      println("works")
       return tweets
     }
     if let error = error{
       
     }
-
+  println("broke")
   return nil
 }
 }
