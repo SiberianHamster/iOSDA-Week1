@@ -3,7 +3,7 @@
 import UIKit
 
 
-var someRandomString = "hijhih iHiHIhIhi"
+var someRandomString = "hiHIHihIh i hi hi hi"
 var isLetterH = false
 var count = 0
 
@@ -21,5 +21,5 @@ for character in someRandomString {
     isLetterH = false
   }
 }
-println(count)
+println("Number of hi: \(count)")
 
