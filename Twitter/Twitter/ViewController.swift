@@ -18,19 +18,22 @@ class ViewController: UIViewController {
     LoginSevices.loginForTwitter { (errorDescription, account) -> (Void) in
       if let errorDescription = errorDescription {
         println("error occured")
-      }}
+      }
+      if let account = account {TwitterService.tweetsFromHomeTimeline(account, completionHandler: { (errorDescription, tweets) -> (Void) in
+        if let tweets = tweets{
+          self.tweets = tweets
+          self.tableView.reloadData()
+
+        }
+      })
+    }
+    }
     
     super.viewDidLoad()
     tableView.dataSource = self
+    tableView.reloadData()
     
-    if let filepath = NSBundle.mainBundle().pathForResource("tweet", ofType: "json"){
-      if let data = NSData(contentsOfFile: filepath){
-        if let tweets = TweetJSONParser.tweetsFromJSONData(data){
-          self.tweets = tweets
-        }
-      }
-    }
-    
+  
   }
   
   override func didReceiveMemoryWarning() {
