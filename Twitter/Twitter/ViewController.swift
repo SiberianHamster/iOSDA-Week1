@@ -15,6 +15,11 @@ class ViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   
   override func viewDidLoad() {
+    LoginSevices.loginForTwitter { (errorDescription, account) -> (Void) in
+      if let errorDescription = errorDescription {
+        println("error occured")
+      }}
+    
     super.viewDidLoad()
     tableView.dataSource = self
     
