@@ -20,11 +20,25 @@ class TwitterService{
         println("error")
         completionHandler("could not connect to server", nil)
       
-      } else {println(response.statusCode)
+      } else {switch response.statusCode{
+      case 200 :
         let tweets = TweetJSONParser.tweetsFromJSONData(data)
         completionHandler(nil,tweets)
-    }
-
-    })
-  }
+        
+      case 300 :
+        println("no new data")
+        let tweets = TweetJSONParser.tweetsFromJSONData(data)
+        completionHandler(nil,tweets)
+      
+      case 400...499 :
+        println("A 400s code, sorry we did something wrong.")
+        
+      case 500...599 :
+        println("A 500s code, Something is wrong with Twitter's Server, most likely try again later.")
+      
+      default: println("something else went wrong and there shoudln't")}
+      
+      }
+      })
+}
 }
