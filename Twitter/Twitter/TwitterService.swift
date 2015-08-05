@@ -22,8 +22,11 @@ class TwitterService{
       
       } else {switch response.statusCode{
       case 200 :
+        NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
         let tweets = TweetJSONParser.tweetsFromJSONData(data)
-        completionHandler(nil,tweets)
+        completionHandler(nil,tweets)  
+        })
+        
         
       case 300 :
         println("no new data")
