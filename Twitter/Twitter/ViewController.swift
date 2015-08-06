@@ -53,9 +53,9 @@ extension ViewController: UITableViewDataSource{
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! UITableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetTableViewCell
     let tweet = tweets[indexPath.row]
-    cell.textLabel?.text = tweet.text
+    cell.tweetTextLabel?.text = tweet.text
     return cell
   }
   
