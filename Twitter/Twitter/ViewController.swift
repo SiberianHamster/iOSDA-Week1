@@ -40,6 +40,15 @@ class ViewController: UIViewController {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "tweetDetailSegue" {
+      var segueNorm = segue.destinationViewController as! TweetDetailViewController
+      var selectedRow = self.tableView.indexPathForSelectedRow()
+      var tweetToPass = self.tweets[selectedRow!.row]
+      segueNorm.selectedTweet = tweetToPass
+    }
+  }
 
 
 }

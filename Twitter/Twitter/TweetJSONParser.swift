@@ -20,10 +20,48 @@ class TweetJSONParser{
         userInfo = tweetObject["user"] as? [String : AnyObject],
         id = tweetObject["id_str"] as? String,
         userName = userInfo["name"] as? String,
-          profileImage = userInfo["profile_image_url"] as? String{
+        profileImage = userInfo["profile_image_url"] as? String{
+          if let retweetedObject = tweetObject["retweeted_status"] as? [String : AnyObject],
+          retweetText = retweetedObject["text"] as? String
+          {
+            if let originalUserDict = retweetedObject["user"] as? [String: AnyObject]{
+              if let retweetId = originalUserDict["id_str"] as? String,
+                retweetUserName = originalUserDict["name"] as? String{
+                  let tweet = Tweet(username: userName, id: id, profileImageURL: profileImage, text: text, retweetObject: retweetedObject, retweetId: retweetId, retweetUser: retweetUserName, quoteUser: nil, quoteText: nil)
+                  tweets.append(tweet)
+                  println("retweet")
+              }
+            }else{
+               if let reQuotedObject = tweetObject["quoted_status"] as? [String : AnyObject],
+          quoteText = reQuotedObject["text"] as? String
+          {
+            if let quoteStatusDict = reQuotedObject["user"] as? [String : AnyObject],
+            quoteUser = quoteStatusDict["name"] as? String
+            {
+              let tweet = Tweet(username: userName, id: id, profileImageURL: profileImage, text: text, retweetObject: nil, retweetId: nil, retweetUser: nil, quoteUser: quoteUser,quoteText: quoteText)
+              tweets.append(tweet)
 
-            let tweet = Tweet(username: userName, id: id, profileImageURL: profileImage, text: text)
+              println("quote")
+            }else{
+            
+              
+              
+               let tweet = Tweet(username: userName, id: id, profileImageURL: profileImage, text: text, retweetObject: retweetedObject, retweetId: nil, retweetUser: nil, quoteUser: nil, quoteText: nil)
+            tweets.append(tweet)
+            println("normal")
+            }
+
+           
+          }
+         
+            }
+          }
+          
+          else{
+            let tweet = Tweet(username: userName, id: id, profileImageURL: profileImage, text: text, retweetObject: nil, retweetId: nil, retweetUser: nil, quoteUser: nil, quoteText: nil)
           tweets.append(tweet)
+            println("normal")
+          }
         }else{
           println("WTF")
       }
