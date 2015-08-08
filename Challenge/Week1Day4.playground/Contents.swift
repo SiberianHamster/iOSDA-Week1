@@ -3,8 +3,10 @@
 import UIKit
 
 var someRandomString : String
+var outputString = ""
+var temparray : [Character] = []
 
-func magicX (theString:String){
+func magicX (theString:String)->String{
   var numberOfX = 0
   var indexNumberOfCharacters = -1
   
@@ -13,33 +15,40 @@ func magicX (theString:String){
     if characters == "x" {
       numberOfX++
     }
+  temparray.append(characters) 
   }
-  
   
   var whichXAreWeOn = 1
   var whereInIndex = 0
   
-  for characters in theString{
+  for element in temparray{
     
-    
-    if characters == "x" {
+    if element == "x" {
       switch whichXAreWeOn {
       case 1:
         println("first x")
       case numberOfX:
         println("last x")
       default:
-        someRandomString.removeAtIndex(whereInIndex)
+      temparray.removeAtIndex(whereInIndex)
+      println("removing x")
+
         whereInIndex--
-        numberOfX--
         indexNumberOfCharacters--
       }
       whichXAreWeOn++
     }
-  whereInIndex++
+    whereInIndex++
   }
-
+  for element in temparray{
+    outputString.append(element)
+  }
+  println("returning a string ' \(outputString)'")
+  return outputString
 }
-someRandomString = "hixxhixxxhix"
 
+someRandomString = "ax xxvx sx##@axxhsxh"
 magicX(someRandomString)
+
+
+

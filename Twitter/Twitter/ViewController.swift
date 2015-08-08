@@ -11,6 +11,9 @@ import UIKit
 class ViewController: UIViewController {
 
   var tweets = [Tweet]()
+  
+  lazy var imageQueue = NSOperationQueue()
+  
 
   @IBOutlet weak var tableView: UITableView!
   
