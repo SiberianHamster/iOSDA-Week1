@@ -41,9 +41,7 @@ class ViewController: UIViewController {
   
   }
   
-  override func viewWillAppear(animated: Bool) {
-    tableView.reloadData()
-  }
+
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
@@ -58,15 +56,17 @@ class ViewController: UIViewController {
       segueNorm.selectedTweet = tweetToPass
     }
     
-    
-    if segue.identifier == "innerDetail" {
-      var segueNorm = segue.destinationViewController as! InnerViewController
-      var selectedRow = self.tableView.indexPathForSelectedRow()
-      var userToPass = self.tweets[selectedRow!.row].username
-      segueNorm.userName = userToPass
-    }
+//    
+//    if segue.identifier == "innerDetail" {
+//      var segueNorm = segue.destinationViewController as! InnerViewController
+//      var selectedRow = self.tableView.indexPathForSelectedRow()
+//      var userToPass = self.tweets[selectedRow!.row].username
+//      segueNorm.userName = userToPass
+//    }
 
   }
+  
+
   
 
 
