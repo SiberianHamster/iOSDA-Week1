@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Mark Lin. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct Tweet {
   let username : String
@@ -18,4 +18,5 @@ struct Tweet {
   let retweetUser : String?
   let quoteUser : String?
   let quoteText : String?
+  var userProfileImage : UIImage?
 }

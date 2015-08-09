@@ -27,7 +27,7 @@ class TweetJSONParser{
             if let originalUserDict = retweetedObject["user"] as? [String: AnyObject]{
               if let retweetId = originalUserDict["id_str"] as? String,
                 retweetUserName = originalUserDict["name"] as? String{
-                  let tweet = Tweet(username: userName, id: id, profileImageURL: profileImage, text: text, retweetObject: retweetedObject, retweetId: retweetId, retweetUser: retweetUserName, quoteUser: nil, quoteText: nil)
+                  let tweet = Tweet(username: userName, id: id, profileImageURL: profileImage, text: text, retweetObject: retweetedObject, retweetId: retweetId, retweetUser: retweetUserName, quoteUser: nil, quoteText: nil, userProfileImage:nil)
                   tweets.append(tweet)
                   println("retweet")
               }
@@ -38,7 +38,7 @@ class TweetJSONParser{
             if let quoteStatusDict = reQuotedObject["user"] as? [String : AnyObject],
             quoteUser = quoteStatusDict["name"] as? String
             {
-              let tweet = Tweet(username: userName, id: id, profileImageURL: profileImage, text: text, retweetObject: nil, retweetId: nil, retweetUser: nil, quoteUser: quoteUser,quoteText: quoteText)
+              let tweet = Tweet(username: userName, id: id, profileImageURL: profileImage, text: text, retweetObject: nil, retweetId: nil, retweetUser: nil, quoteUser: quoteUser,quoteText: quoteText, userProfileImage:nil)
               tweets.append(tweet)
 
               println("quote")
@@ -46,7 +46,7 @@ class TweetJSONParser{
             
               
               
-               let tweet = Tweet(username: userName, id: id, profileImageURL: profileImage, text: text, retweetObject: retweetedObject, retweetId: nil, retweetUser: nil, quoteUser: nil, quoteText: nil)
+               let tweet = Tweet(username: userName, id: id, profileImageURL: profileImage, text: text, retweetObject: retweetedObject, retweetId: nil, retweetUser: nil, quoteUser: nil, quoteText: nil, userProfileImage:nil)
             tweets.append(tweet)
             println("normal")
             }
@@ -58,7 +58,7 @@ class TweetJSONParser{
           }
           
           else{
-            let tweet = Tweet(username: userName, id: id, profileImageURL: profileImage, text: text, retweetObject: nil, retweetId: nil, retweetUser: nil, quoteUser: nil, quoteText: nil)
+            let tweet = Tweet(username: userName, id: id, profileImageURL: profileImage, text: text, retweetObject: nil, retweetId: nil, retweetUser: nil, quoteUser: nil, quoteText: nil, userProfileImage:nil)
           tweets.append(tweet)
             println("normal")
           }

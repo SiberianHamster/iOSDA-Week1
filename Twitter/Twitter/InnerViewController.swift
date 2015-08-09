@@ -8,35 +8,42 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class InnerViewController: UIViewController {
+  
   var tweets = [Tweet]()
   
   lazy var imageQueue = NSOperationQueue()
+  
 
   @IBOutlet weak var tableView: UITableView!
   
+  var userName : String = ""
+  
   override func viewDidLoad() {
-    LoginSevices.loginForTwitter { (errorDescription, account) -> (Void) in
+
+    LoginSevices.loginForTwitter{(errorDescription, account) -> (Void) in
       if let errorDescription = errorDescription {
         println("error occured")
       }
-      if let account = account {TwitterService.tweetsFromHomeTimeline(account, completionHandler: { (errorDescription, tweets) -> (Void) in
+      if let account = account {
+        TwitterService.tweetsFromUserTimeline(account, userName: self.userName, completionHandler: { (errorDescription, tweets) -> (Void) in
+
         if let tweets = tweets{
           self.tweets = tweets
           self.tableView.reloadData()
-
+          
         }
       })
-    }
+      }
     }
     
     super.viewDidLoad()
     tableView.dataSource = self
     tableView.reloadData()
     
-  
+    
   }
+  
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
@@ -50,31 +57,21 @@ class ViewController: UIViewController {
       var tweetToPass = self.tweets[selectedRow!.row]
       segueNorm.selectedTweet = tweetToPass
     }
-    
-    
-    if segue.identifier == "innerDetail" {
-      var segueNorm = segue.destinationViewController as! InnerViewController
-      var selectedRow = self.tableView.indexPathForSelectedRow()
-      var userToPass = self.tweets[selectedRow!.row].username
-      segueNorm.userName = userToPass
-    }
-
   }
   
-
-
+  
 }
 
 
 //MARK UITableViewDataSource
-extension ViewController: UITableViewDataSource{
+extension InnerViewController: UITableViewDataSource{
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return tweets.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetTableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("innerTweetCell", forIndexPath: indexPath) as! TweetTableViewCell
     cell.tag++
     let tag = cell.tag
     let tweet = tweets[indexPath.row]
@@ -83,12 +80,12 @@ extension ViewController: UITableViewDataSource{
     {
       
       cell.userButtonImage.setBackgroundImage(profileImage, forState: UIControlState.Normal)
-     
+      
       
     } else {
       imageQueue.addOperationWithBlock({ () -> Void in
         if let imageURL = NSURL(string: tweet.profileImageURL),
-        imageData = NSData(contentsOfURL: imageURL),
+          imageData = NSData(contentsOfURL: imageURL),
           image = UIImage(data: imageData){
             var size : CGSize
             switch UIScreen.mainScreen().scale{
@@ -101,7 +98,7 @@ extension ViewController: UITableViewDataSource{
             }
             let resizedImage = ImageResizer.resizeImage(image, size: size)
             NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-//              tweet.userProfileImage = resizedImage
+              //              tweet.userProfileImage = resizedImage
               self.tweets[indexPath.row] = tweet
               if cell.tag == tag {
                 cell.userButtonImage.setBackgroundImage(resizedImage, forState: UIControlState.Normal)
