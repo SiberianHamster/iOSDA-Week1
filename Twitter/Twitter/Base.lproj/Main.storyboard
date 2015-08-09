@@ -61,7 +61,7 @@
         <!--Tweet Detail View Controller-->
         <scene sceneID="dhm-0h-Jw5">
             <objects>
-                <viewController id="Hhn-Wi-PKd" customClass="TweetDetailViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="1212" id="Hhn-Wi-PKd" customClass="TweetDetailViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ImJ-EM-wDt"/>
                         <viewControllerLayoutGuide type="bottom" id="GVe-9D-cQc"/>
