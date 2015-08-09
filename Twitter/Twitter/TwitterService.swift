@@ -22,6 +22,7 @@ class TwitterService{
       
       } else {switch response.statusCode{
       case 200 :
+        println("You got a 200 response for your timeline")
         NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
         let tweets = TweetJSONParser.tweetsFromJSONData(data)
         completionHandler(nil,tweets)  
@@ -55,6 +56,7 @@ class TwitterService{
         
       } else {switch response.statusCode{
       case 200 :
+        println("You got a 200 response for someone else's timeline")
         NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
           let tweets = TweetJSONParser.tweetsFromJSONData(data)
           completionHandler(nil,tweets)
