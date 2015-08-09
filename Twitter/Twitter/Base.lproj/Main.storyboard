@@ -127,6 +127,7 @@
         <!--Inner View Controller-->
         <scene sceneID="vOY-61-i3D">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BB2-5J-L8X" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="gqF-n4-r7y" customClass="InnerViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HhD-zc-jzr"/>
@@ -140,7 +141,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="innerTweetCell" id="upe-dN-Fyf" customClass="TweetTableViewCell" customModule="Twitter" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="innerTweetCell" id="upe-dN-Fyf">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="upe-dN-Fyf" id="Noo-V3-Ywc">
@@ -170,7 +171,6 @@
                         <outlet property="tableView" destination="zgQ-Q9-bEw" id="67a-9s-Gd5"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BB2-5J-L8X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1714" y="1069"/>
         </scene>

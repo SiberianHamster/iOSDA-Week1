@@ -13,30 +13,36 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mll-j7-Tj1" id="bCU-GC-r1R">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMP-Br-X66">
-                        <rect key="frame" x="8" y="8" width="30" height="30"/>
-                        <state key="normal" title="test">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUr-jW-X90">
-                        <rect key="frame" x="215" y="8" width="287" height="130.5"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="130.5" id="Jyh-Ai-wur"/>
-                            <constraint firstAttribute="width" constant="287" id="opU-Es-ZPY"/>
-                        </constraints>
+                        <rect key="frame" x="56" y="8" width="446" height="136.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMP-Br-X66">
+                        <rect key="frame" x="8" y="8" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="ZZq-W4-h0x"/>
+                            <constraint firstAttribute="height" constant="40" id="r8q-Rq-1V0"/>
+                        </constraints>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="YMP-Br-X66" firstAttribute="leading" secondItem="bCU-GC-r1R" secondAttribute="leadingMargin" id="Hgn-Wo-T2a"/>
-                    <constraint firstItem="MUr-jW-X90" firstAttribute="top" secondItem="bCU-GC-r1R" secondAttribute="topMargin" id="WMd-r1-fTf"/>
-                    <constraint firstItem="MUr-jW-X90" firstAttribute="trailing" secondItem="bCU-GC-r1R" secondAttribute="trailingMargin" id="tUt-2b-pvm"/>
-                    <constraint firstItem="YMP-Br-X66" firstAttribute="top" secondItem="bCU-GC-r1R" secondAttribute="topMargin" id="wLu-q9-epW"/>
+                    <constraint firstItem="MUr-jW-X90" firstAttribute="trailing" secondItem="bCU-GC-r1R" secondAttribute="trailingMargin" id="13I-Ui-iWi"/>
+                    <constraint firstItem="MUr-jW-X90" firstAttribute="bottom" secondItem="bCU-GC-r1R" secondAttribute="bottomMargin" id="9Ff-SP-mkc"/>
+                    <constraint firstItem="MUr-jW-X90" firstAttribute="leading" secondItem="YMP-Br-X66" secondAttribute="trailing" constant="8" id="D00-LZ-GhL"/>
+                    <constraint firstItem="YMP-Br-X66" firstAttribute="leading" secondItem="bCU-GC-r1R" secondAttribute="leadingMargin" id="TKp-rY-Cw1"/>
+                    <constraint firstItem="YMP-Br-X66" firstAttribute="top" secondItem="bCU-GC-r1R" secondAttribute="topMargin" id="rL9-zK-gHo"/>
+                    <constraint firstItem="MUr-jW-X90" firstAttribute="top" secondItem="bCU-GC-r1R" secondAttribute="topMargin" id="wj5-NZ-5cY"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="tweetTextLabel" destination="MUr-jW-X90" id="f1r-ia-wuN"/>
+                <outlet property="userButtonImage" destination="YMP-Br-X66" id="Do7-lm-LtI"/>
+            </connections>
             <point key="canvasLocation" x="157" y="76.5"/>
         </tableViewCell>
     </objects>

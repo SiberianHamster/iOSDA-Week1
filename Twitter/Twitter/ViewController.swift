@@ -41,6 +41,10 @@ class ViewController: UIViewController {
   
   }
   
+  override func viewWillAppear(animated: Bool) {
+    tableView.reloadData()
+  }
+  
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
@@ -77,16 +81,17 @@ extension ViewController: UITableViewDataSource{
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! UITableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetTableViewCell
     cell.tag++
     let tag = cell.tag
     let tweet = tweets[indexPath.row]
-    cell.textLabel?.text = tweet.text
+//    cell.textLabel?.text = tweet.text
+    cell.tweetTextLabel.text = tweet.text
 
     if let profileImage = tweet.userProfileImage
     {
 
-//      cell.userButtonImage.setBackgroundImage(profileImage, forState: UIControlState.Normal)
+      cell.userButtonImage.setBackgroundImage(profileImage, forState: UIControlState.Normal)
      
       
     } else {
@@ -108,7 +113,7 @@ extension ViewController: UITableViewDataSource{
 //              tweet.userProfileImage = resizedImage
               self.tweets[indexPath.row] = tweet
               if cell.tag == tag {
-//                cell.userButtonImage.setBackgroundImage(resizedImage, forState: UIControlState.Normal)
+                cell.userButtonImage.setBackgroundImage(resizedImage, forState: UIControlState.Normal)
                 
               }
             })
