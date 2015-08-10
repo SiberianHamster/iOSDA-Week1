@@ -45,8 +45,11 @@ class TwitterService{
       })
 }
   
-  class func tweetsFromUserTimeline(account : ACAccount, userName: String, completionHandler : (String?, [Tweet]?) -> (Void)){
-    let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: NSURL(string: "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=\(userName)")!, parameters: nil)
+  class func tweetsFromUserTimeline(account : ACAccount, userName: String, completionHandler : (String?, [Tweet]?) -> (Void)){    
+    let url = NSURL(string: "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=\(userName)")
+    
+    let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: url, parameters:   nil)
+    
     request.account = account
     
     request.performRequestWithHandler({ (data, response, error) -> Void in

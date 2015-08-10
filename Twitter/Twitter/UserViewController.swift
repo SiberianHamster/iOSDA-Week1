@@ -22,10 +22,10 @@ class UserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       
-      var userName = selectedTweet.username
+      var userName = selectedTweet.screen_name
       
-      tableView.registerNib(UINib(nibName: "tweetCell", bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: "tweetCell")
-      
+      tableView.registerNib(UINib(nibName: "TweetCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "TweetCell")
+       
       LoginSevices.loginForTwitter { (errorDescription, account) -> (Void) in
         if let errorDescription = errorDescription {
           println("error occured")

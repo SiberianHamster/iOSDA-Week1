@@ -53,6 +53,7 @@
                     <connections>
                         <outlet property="tableView" destination="kn2-8U-f4m" id="iw9-sy-JFe"/>
                         <segue destination="Hhn-Wi-PKd" kind="show" identifier="detailedSegue" id="1IG-cx-jpc"/>
+                        <segue destination="aII-eB-cgc" kind="show" identifier="VcToUser" id="EHI-nc-Uum"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -173,4 +174,7 @@
             <point key="canvasLocation" x="2470" y="247"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="EHI-nc-Uum"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -11,6 +11,7 @@ import UIKit
 struct Tweet {
   let username : String
   let id : String
+  let screen_name : String
   let profileImageURL : String
   let text : String
   let retweetObject : [String : AnyObject]?
