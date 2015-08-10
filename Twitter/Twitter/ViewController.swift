@@ -35,8 +35,10 @@ class ViewController: UIViewController {
     }
     
     super.viewDidLoad()
+    tableView.delegate = self
     tableView.dataSource = self
     tableView.reloadData()
+    
     
   
   }
@@ -49,21 +51,12 @@ class ViewController: UIViewController {
   }
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if segue.identifier == "tweetDetailSegue" {
+    if segue.identifier == "detailedSegue" {
       var segueNorm = segue.destinationViewController as! TweetDetailViewController
       var selectedRow = self.tableView.indexPathForSelectedRow()
       var tweetToPass = self.tweets[selectedRow!.row]
       segueNorm.selectedTweet = tweetToPass
     }
-    
-//    
-//    if segue.identifier == "innerDetail" {
-//      var segueNorm = segue.destinationViewController as! InnerViewController
-//      var selectedRow = self.tableView.indexPathForSelectedRow()
-//      var userToPass = self.tweets[selectedRow!.row].username
-//      segueNorm.userName = userToPass
-//    }
-
   }
 
 }
@@ -82,7 +75,6 @@ extension ViewController: UITableViewDataSource{
     cell.tag++
     let tag = cell.tag
     let tweet = tweets[indexPath.row]
-//    cell.textLabel?.text = tweet.text
     cell.tweetTextLabel.text = tweet.text
 
     if let profileImage = tweet.userProfileImage
@@ -107,7 +99,6 @@ extension ViewController: UITableViewDataSource{
             }
             let resizedImage = ImageResizer.resizeImage(image, size: size)
             NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-//              tweet.userProfileImage = resizedImage
               self.tweets[indexPath.row] = tweet
               if cell.tag == tag {
                 cell.userButtonImage.setBackgroundImage(resizedImage, forState: UIControlState.Normal)
@@ -120,5 +111,13 @@ extension ViewController: UITableViewDataSource{
     return cell
   }
   
+  
+}
+
+extension ViewController: UITableViewDelegate{
+  
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    performSegueWithIdentifier("detailedSegue", sender: nil)
+  }
   
 }
