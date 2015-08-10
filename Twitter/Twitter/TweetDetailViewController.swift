@@ -20,6 +20,8 @@ class TweetDetailViewController: UIViewController {
   
   @IBOutlet weak var detailedUserLabel: UILabel!
   
+  @IBOutlet weak var userButtonImage: UIButton!
+  
   var selectedTweet : Tweet!
   
     override func viewDidLoad() {
@@ -27,7 +29,7 @@ class TweetDetailViewController: UIViewController {
       self.detailedTextLabel.text = selectedTweet.text
       self.detailedUserLabel.text = selectedTweet.username
       self.detailedIDLabel.text=selectedTweet.id
-      
+      self.userButtonImage.setBackgroundImage(self.selectedTweet.userProfileImage, forState: UIControlState.Normal)
       if let retweetObject = selectedTweet.retweetObject{
         let retweetText = selectedTweet.retweetObject?["text"] as! String
         self.detailedTextLabel.text = retweetText
@@ -48,3 +50,13 @@ class TweetDetailViewController: UIViewController {
 
 }
 
+extension TweetDetailViewController : UINavigationControllerDelegate{
+
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "userSeg"{
+      let segNorm = segue.destinationViewController as! UserViewController
+      segNorm.selectedTweet = selectedTweet
+  }
+  
+}
+}

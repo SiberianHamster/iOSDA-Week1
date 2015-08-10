@@ -74,7 +74,7 @@ extension ViewController: UITableViewDataSource{
     let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetTableViewCell
     cell.tag++
     let tag = cell.tag
-    let tweet = tweets[indexPath.row]
+    var tweet = tweets[indexPath.row]
     cell.tweetTextLabel.text = tweet.text
 
     if let profileImage = tweet.userProfileImage
@@ -99,6 +99,7 @@ extension ViewController: UITableViewDataSource{
             }
             let resizedImage = ImageResizer.resizeImage(image, size: size)
             NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+              tweet.userProfileImage = resizedImage
               self.tweets[indexPath.row] = tweet
               if cell.tag == tag {
                 cell.userButtonImage.setBackgroundImage(resizedImage, forState: UIControlState.Normal)
